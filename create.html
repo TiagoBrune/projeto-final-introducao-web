@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Conta</title>
+    <link rel="stylesheet" href="./create.css" />
+  </head>
+  <body class="fundo">
+    <div>
+      <img src="./img_sist_recd.jpg" class="foto" alt="capa_sistema" />
+    </div>
+    <h1 class="titulo">Criar nova conta</h1>
+    <div class="sistema">
+      <form>
+        <label for="Nome completo"></label>
+        <input type="text" name="nome" id="nomeInput" placeholder="Seu Nome" />
+
+        <label for="Senha"></label> <br />
+        <br />
+        <input
+          id="senhaInput"
+          type="password"
+          name="text"
+          placeholder="Digite a senha"
+        />
+        <br />
+        <br />
+
+        <label for="Senha"></label>
+        <input
+          id="confirmaSenhaInput"
+          type="password"
+          name="text"
+          placeholder="Repita a senha"
+        />
+        <br />
+        <br />
+      </form>
+    </div>
+    <div>
+      <button onclick="register()" id="buttonEnter">Criar conta</button>
+    </div>
+    <script>
+      const email = document.getElementById("nomeInput");
+      const password = document.getElementById("senhaInput");
+      const repeatPassword = document.getElementById("confirmaSenhaInput");
+
+      const allUsers = JSON.parse(localStorage.getItem("AllUsers")) || [];
+
+      function register() {
+        const checkUser = allUsers.some((user) => user.email === email.value);
+        if (checkUser) {
+          return alert("Nome ja cadastrado");
+        }
+        if (password.value != repeatPassword.value) {
+          return alert("Senhas estao diferentes.");
+        }
+        const newUser = {
+          email: email.value,
+          password: password.value,
+          logged: false,
+          errands: [],
+        };
+        allUsers.push(newUser);
+        console.log(allUsers);
+
+        saveOnStorage();
+        window.location.href = "login.html";
+      }
+
+      function saveOnStorage() {
+        localStorage.setItem("AllUsers", JSON.stringify(allUsers));
+      }
+    </script>
+  </body>
+</html>

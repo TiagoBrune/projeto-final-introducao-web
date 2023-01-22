@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de recados</title>
+    <link rel="stylesheet" href="./list.css" />
+  </head>
+  <body class="fundo">
+    <div class="container">
+      <h1 class="titulo">Meus Recados</h1>
+      <div class="divLat">
+        <span class="linha1"> Descrição </span>
+        <span class="linha2"> Recados </span>
+      </div>
+
+      <div class="divAdd">
+        <button class="buttonAdd" onClick="addErrands()">Adicionar</button>
+        <button class="buttonSair" onClick="logout()">Sair</button>
+      </div>
+      <table class="todaTabela">
+        <thead>
+          <tr class="trTabela">
+            <th>#</th>
+            <th>Descrição</th>
+            <th>Recados</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody id="tabela"></tbody>
+      </table>
+    </div>
+
+    <script>
+      const table = document.getElementById("tabela");
+      const loggedUser = JSON.parse(sessionStorage.getItem("loggedUser"));
+      const allUsers = JSON.parse(localStorage.getItem("AllUsers"));
+
+      function addErrands() {
+        const user = prompt("Digite o nome para seu recado");
+        const errand = prompt("Digite seu recado");
+
+        const newErrad = {
+          user: user,
+          errands: errand,
+        };
+
+        loggedUser.errands.push(newErrad);
+        saveOnStorage();
+        renderTable();
+      }
+
+      function logout() {
+        sessionStorage.removeItem("loggedUser");
+        window.location.href = "login.html";
+      }
+
+      function saveOnStorage() {
+        sessionStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+
+        const findUser = allUsers.findIndex(
+          (user) => user.email === loggedUser.email
+        );
+
+        allUsers[findUser] = loggedUser;
+
+        localStorage.setItem("AllUsers", JSON.stringify(allUsers));
+      }
+
+      function deleteErrand(index) {
+        loggedUser.errands.splice(index, 1);
+        saveOnStorage();
+        renderTable();
+      }
+
+      function editErrand(index) {
+        const newName = prompt("Digite um nome para o seu recado");
+        const newErrand = prompt("Digite seu novo recado");
+
+        loggedUser.errands[index].user = newName;
+        loggedUser.errands[index].errands = newErrand;
+        saveOnStorage();
+        renderTable();
+      }
+
+      function renderTable() {
+        table.innerHTML = "";
+        loggedUser.errands.map((value, index) => {
+          const tr = document.createElement("tr");
+          const td1 = document.createElement("td");
+          const td2 = document.createElement("td");
+          const td3 = document.createElement("td");
+          const td4 = document.createElement("td");
+          const deleteButton = document.createElement("button");
+          const EditButton = document.createElement("button");
+
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+          tr.appendChild(td4);
+          td4.appendChild(deleteButton);
+          td4.appendChild(EditButton);
+
+          deleteButton.setAttribute("onClick", `deleteErrand(${index})`);
+
+          EditButton.setAttribute("onClick", `editErrand(${index})`);
+
+          td1.innerText = index + 1;
+          td2.innerText = value.user;
+          td3.innerText = value.errands;
+          deleteButton.innerHTML = "Apagar";
+          EditButton.innerHTML = "Editar";
+
+          table.appendChild(tr);
+        });
+      }
+
+      function checkLogged() {
+        if (!loggedUser?.logged || !loggedUser) {
+          alert("Usuario nao esta credenciado");
+          return (window.location.href = "login.html");
+        }
+      }
+      checkLogged();
+      renderTable();
+    </script>
+  </body>
+</html>

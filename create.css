@@ -1,0 +1,99 @@
+    .fundo {
+    background-color: rgba(6, 111, 160, 0.39);
+    }
+
+    .foto {
+    display: flex;
+    position: absolute;
+    left: 0px;
+    top: 0px; 
+    bottom: 0px; 
+    width: 660px;
+    height: 619px;
+    }
+
+    #senhaInput{
+    width: 150px;
+    height: 25px;
+    border: none; 
+    background-color: rgba(41, 175, 236, 0.349);
+    }
+
+    #senhaInput:hover{
+    background-color:bisque;
+    }
+
+    #nomeInput{
+    width: 150px;
+    height: 25px;
+    border: none; 
+    background-color: rgba(41, 175, 236, 0.349);
+    }
+
+    #nomeInput:hover{
+    background-color: bisque;
+    }
+
+    #confirmaSenhaInput{
+    width: 150px;
+    height: 25px;
+    border: none; 
+    background-color: rgba(41, 175, 236, 0.349);
+    }
+
+    #confirmaSenhaInput:hover{
+    background-color:bisque;
+    }
+
+    #buttonEnter{
+    color: rgb(4, 60, 112);
+    background-color: rgba(41, 174, 236, 0.575);
+    border-radius: 10px;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    display: flex;
+    position: absolute;
+    left: 898px;
+    top: 400px;  }
+
+    #buttonEnter:hover {
+    background-color: rgba(14, 102, 124, 0.486);
+    color: bisque;
+    }
+        
+
+    #criarConta{
+    color: rgb(0, 4, 218);
+    border: none;
+    background-color: rgba(57, 118, 146, 0.342);
+    opacity: 0.7;
+    display: flex;
+    position: absolute;
+    left: 120px;
+    top: 95px; 
+    }
+
+    .titulo {
+    color: rgb(4, 60, 112);
+    background-color:rgba(6, 111, 160, 0.349);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 40px;
+    display: flex;
+    position: absolute;
+    left: 810px;
+    top: 100px; 
+    }
+
+    .titulo:hover {
+    background-color: rgba(11, 11, 70, 0.178);
+    }
+
+    .sistema {
+    display: flex;
+    position: absolute;
+    left: 880px;
+    top: 230px; 
+    bottom: 0px; 
+    }

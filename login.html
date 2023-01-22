@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <link rel="stylesheet" href="./login.css" />
+  </head>
+  <body class="fundo">
+    <main>
+      <div>
+        <figure>
+          <img class="foto" src="./img_sist_recd.jpg" alt="capa_sistema" />
+        </figure>
+      </div>
+      <div>
+        <h1 class="titulo">
+          Acesse o sistema <br />
+          de recados
+        </h1>
+      </div>
+      <div class="sistema">
+        <form>
+          <label for="Nome completo"></label>
+          <input
+            id="nomeInput"
+            type="text"
+            name="nome"
+            placeholder="Seu Nome"
+          />
+
+          <label for="Senha"></label>
+          <input
+            id="senhaInput"
+            type="password"
+            name="senha"
+            placeholder="Digite a senha"
+          />
+          <br />
+          <br />
+
+          <button
+            onclick="login()"
+            id="buttonEnter"
+            type="button"
+            value="Entrar"
+          >
+            Entrar
+          </button>
+          <br />
+          <br />
+        </form>
+        <button
+          onClick="window.location='create.html';"
+          id="criarConta"
+          type="submit"
+          value="conta"
+        >
+          Criar conta
+        </button>
+      </div>
+    </main>
+    <script>
+      const email = document.getElementById("nomeInput");
+      const password = document.getElementById("senhaInput");
+
+      const allUsers = JSON.parse(localStorage.getItem("AllUsers")) || [];
+
+      function login() {
+        const checkUser = allUsers.find(
+          (user) =>
+            user.email === email.value && user.password === password.value
+        );
+
+        const findUserIndex = allUsers.findIndex(
+          (user) => user.email === email.value
+        );
+
+        if (!checkUser) {
+          return alert("Email ou senha incorreta");
+        }
+        checkUser.logged = true;
+
+        sessionStorage.setItem("loggedUser", JSON.stringify(checkUser));
+        window.location.href = "list.html";
+      }
+    </script>
+  </body>
+</html>

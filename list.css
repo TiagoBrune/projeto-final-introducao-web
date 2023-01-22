@@ -1,0 +1,105 @@
+    .fundo {
+    background-color: rgba(6, 111, 160, 0.233);
+    }
+
+    .titulo {
+    position: relative;
+    top: 5x;
+    background-color: rgba(6, 111, 160, 0.349);
+    right: 1%;
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+    }
+
+    .buttonAdd {
+    background-color: rgba(59, 158, 13, 0.726);
+    border-radius: 15px;
+    border-color: rgba(0, 0, 0, 0.11);
+    font-size: xx-large;
+    position: relative;
+    left: 60%;
+    }
+
+    .buttonAdd:hover{
+    background-color: rgb(8, 235, 8);
+    }
+
+    .buttonSair {
+    background-color: rgba(231, 7, 7, 0.712);
+    border-radius: 15px;
+    border-color: rgba(0, 0, 0, 0.11);
+    font-size: xx-large;
+    position: relative;
+    width: 85px;
+    left: 60%;
+    }
+
+    .buttonSair:hover {
+    background-color: rgb(255, 71, 71);;
+    }
+
+    td {
+    background-color: rgba(10, 53, 243, 0.137);
+    font-size: large;
+    text-align: center;
+    }
+
+    .divAdd {
+    position: relative;
+    left: 20%;
+    top: -40px;
+    }
+
+    .divLat{
+    position: relative;
+    border-radius: 15px;
+    top: 5x;
+    background-color: rgba(41, 175, 236, 0.349);
+    right: 20%;
+    padding: 5px;
+    }
+
+    .linha1 { 
+    border-color: black;
+    border-width: medium;
+    font-size: x-large;
+    position: relative;
+    width: 100px;
+    left: 33%;
+    }
+
+    .linha2 {
+    border-color: black;
+    border-width: medium;
+    font-size: x-large;
+    position: relative;
+    left: 50%;
+    }
+
+    .todaTabela{
+    position: relative;
+    top: 5x;
+    background-color: rgba(41, 174, 236, 0.575);
+    left: 0%;
+    width: 100%;
+    }
+    
+    .trTabela {
+    background-color: rgba(87, 195, 245, 0.349);
+    font-size: large;
+    }
+
+    button {
+    background-color: rgba(229, 241, 232, 0.555);
+    font-size: large;
+    border-radius: 15px;
+    border-color: rgba(45, 118, 151, 0.959);
+    }
+
+    button:hover{
+    background-color: rgba(238, 216, 21, 0.849);
+    }
+
+
+
